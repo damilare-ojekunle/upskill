@@ -1,17 +1,14 @@
-const news = require('../models/user');
-const db = require('../config/database');
+
+
 const router = require('express').Router();
 const bodyParser = require('body-parser');
+const {getAllUsers,getSingleUser,addUser} = require("../controllers/userController")
 
 router.use(bodyParser.json());
 
-router.get('/all', function (req, res) {
-    news.findAll().then((cods) => {
-        res.json(cods);
-        //console.log(cods);
-    }).catch(err => console.log(err))
-
-});
+router.get('/',getAllUsers);
+router.get('/:userId',getSingleUser);
+router.post('/',addUser);
 
 
 router.get('/all/:id', (req, res) => {

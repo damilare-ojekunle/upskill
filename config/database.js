@@ -1,13 +1,15 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
-const db = new Sequelize('codtiy', 'postgres', 'olabisi', {
-    host: 'localhost',
-    dialect: 'postgres',  
-})
- db.authenticate()
- .then(()=>console.log('database connected'))
- .catch(err=>console.log('errpr '+ err ));
-// connection to database
+const sequelize = new Sequelize({
+  dialect: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  database: 'upskill',
+  username: 'postgres',
+  password: 'holiday04',
+});
 
-
-module.exports= db; 
+sequelize
+  .authenticate()
+  .then(() => console.log('Connected to the database'))
+  .catch((error) => console.error('Unable to connect to the database:', error));
