@@ -3,10 +3,11 @@ const sequelize = new Sequelize({
     dialect: 'postgres',
     host: 'localhost',
     port: 5432,
-    database: 'upskill',
-    username: 'postgres',
-    password: 'holiday04',
+    database: process.env.DB_NAME,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
   });
+  
   
   sequelize
     .authenticate()
@@ -32,36 +33,5 @@ const User = sequelize.define('User', {
 sequelize.sync()
   .then(() => console.log('Database synchronized'))
   .catch((error) => console.error('Unable to synchronize the database:', error));
-
-
-
-
-// const Sequelize = require('sequelize');
-// const db = require('../config/database');
-// const { Model, DataTypes } = require('sequelize');
-
-// class User extends Model {}
-// User.init({
-//   name: DataTypes.STRING,
-//   email: DataTypes.STRING,
-//   age: DataTypes.NUMBER
-// }, { db, modelName: 'user' });
-
-// const User = db.define('User', {
-//     name: {
-//         type: Sequelize.STRING,
-//         allowNull: false
-//     },
-//     email: {
-//         type: Sequelize.STRING,
-//         allowNull: false
-//     },
-//     age: {
-//         type: Sequelize.INTEGER,
-//         allowNull: false
-//     },
-// });
-
-
 
 module.exports = User;
