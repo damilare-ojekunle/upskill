@@ -1,5 +1,5 @@
 const {Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize({
+const sequelize =  new Sequelize({
     dialect: 'postgres',
     host: 'localhost',
     port: 5432,
@@ -10,7 +10,7 @@ const sequelize = new Sequelize({
   
   
   try {
-    await sequelize.authenticate();
+     sequelize.authenticate();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);

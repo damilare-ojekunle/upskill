@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database')
 const Comment = sequelize.define('Comment', {
-    body:{
+    content:{
         type: DataTypes.STRING,
         allowNull: false,
     },
